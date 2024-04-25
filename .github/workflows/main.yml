@@ -1,0 +1,28 @@
+name: Deploy App
+
+on:
+  push:
+    branches: [ "main" ]
+
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Future plans in the works to create tarball from within the caprover/deploy-from-github action.
+      - uses: a7ul/tar-action@v1.1.0
+        with:
+          command: c
+          cwd: "./"
+          files: |
+            ./
+          outPath: deploy.tar
+
+      - uses: caprover/deploy-from-github@main
+        with:
+          server: '${{ vars.CAPROVER_SERVER }}'
+          app: '${{ secrets.APP_NAME }}'
+          token: '${{ secrets.APP_TOKEN }}'
