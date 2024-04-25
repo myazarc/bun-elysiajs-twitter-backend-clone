@@ -1,0 +1,22 @@
+{
+  "name": "socialconnect",
+  "version": "1.0.50",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "NODE_ENV=production bun src/index.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
+    "@elysiajs/jwt": "^1.0.2",
+    "@elysiajs/swagger": "^1.0.3",
+    "elysia": "latest",
+    "mongoose": "^8.3.0",
+    "pino": "^8.20.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}
