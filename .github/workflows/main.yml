@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: cp . ./dist
+      - run: cp -r ./ ./dist
 
       - uses: a7ul/tar-action@v1.1.0
         with:
