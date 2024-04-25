@@ -12,15 +12,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Future plans in the works to create tarball from within the caprover/deploy-from-github action.
+      - name: Copy dist path
+      - run: cp . ./dist
+
+      - name: creating tar
       - uses: a7ul/tar-action@v1.1.0
         with:
           command: c
           cwd: "./"
           files: |
-            ../
+            dist/
           outPath: deploy.tar
 
+      - name: deploy
       - uses: caprover/deploy-from-github@main
         with:
           server: '${{ secrets.CAPROVER_SERVER }}'
