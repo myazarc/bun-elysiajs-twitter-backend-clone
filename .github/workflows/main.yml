@@ -23,6 +23,6 @@ jobs:
 
       - uses: caprover/deploy-from-github@main
         with:
-          server: '${{ vars.CAPROVER_SERVER }}'
+          server: '${{ secrets.CAPROVER_SERVER }}'
           app: '${{ secrets.APP_NAME }}'
           token: '${{ secrets.APP_TOKEN }}'
