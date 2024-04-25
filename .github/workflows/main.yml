@@ -12,10 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: pwd
-      - run: ls -al
-
-      - run: tar -cvf deploy.tar .
+      - uses: actions/checkout@master
+      - uses: a7ul/tar-action@v1.1.0
+        with:
+          command: c
+          cwd: "./"
+          files: |
+            ./
+          outPath: deploy.tar
 
       - uses: caprover/deploy-from-github@main
         with:
